@@ -1,17 +1,16 @@
 import React from 'react';
-import { createRoot as reactDomCreateRoot } from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Firebase, { FirebaseContext } from './components/Firebase';
 import { ColorModeScript } from '@chakra-ui/react';
 
-const container = document.getElementById('root');
-const root = reactDomCreateRoot(container);
-
-reactDomCreateRoot(
+const root = ReactDOMClient.createRoot(document.getElementById('root'));
+root.render(
   <FirebaseContext.Provider value={new Firebase()}>
-    <App />
-    <ColorModeScript />
-  </FirebaseContext.Provider>,
-  document.getElementById('root')
+    <React.StrictMode>
+      <App />
+      <ColorModeScript />
+    </React.StrictMode>
+  </FirebaseContext.Provider>
 );

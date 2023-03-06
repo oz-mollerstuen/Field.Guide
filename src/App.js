@@ -2,22 +2,20 @@ import React from 'react';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
-import { Global } from '@chakra-ui/react';
+
 
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
+   Link,
   VStack,
-  Code,
   Grid,
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
-import { Modal } from '@chakra-ui/react';
+import { Routes, Route } from 'react-router';
+
 
 function App() {
   return (
