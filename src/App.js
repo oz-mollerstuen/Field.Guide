@@ -1,4 +1,9 @@
 import React from 'react';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard';
+import { Global } from '@chakra-ui/react';
+
 import {
   ChakraProvider,
   Box,
@@ -10,7 +15,9 @@ import {
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import { Modal } from '@chakra-ui/react';
 
 function App() {
   return (
@@ -19,10 +26,18 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
+            <Routes>
+              <Route exact path="/">
+                <SignIn />
+              </Route>
+              <Route path="/sign-up">
+                <SignUp />
+              </Route>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+            </Routes>
+
             <Link
               color="teal.500"
               href="https://chakra-ui.com"
@@ -30,7 +45,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Learn Chakra
+              Field Guide
             </Link>
           </VStack>
         </Grid>
