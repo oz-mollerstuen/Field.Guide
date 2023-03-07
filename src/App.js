@@ -30,7 +30,7 @@ function App() {
                 <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/forgot-password" element={<PasswordForget />} />
+                <Route path="/forget-password" element={<PasswordForget />} />
               </Routes>
 
               </Router>
@@ -39,7 +39,7 @@ function App() {
 
             <Link
               color="teal.500"
-              href="https://chakra-ui.com"
+              href="https://www.aa.org/"
               fontSize="2xl"
               target="_blank"
               rel="noopener noreferrer"

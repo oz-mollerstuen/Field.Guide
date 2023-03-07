@@ -96,7 +96,7 @@ function PasswordForget(props) {
         }}
         open={openAlert}
         autoHideDuration={6000}
-        message="Password reset link succesfully sent"
+        message="Password reset link successfully sent"
       />
     </div>
   );
