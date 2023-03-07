@@ -3,7 +3,6 @@ import { withFirebase } from '../components/Firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import useStylesInUp from '../config/theme.signinup';
 import { Grid, Box, Text, Input, Button, Avatar, CSSReset, ChakraProvider, } from '@chakra-ui/react';
-import Copyright from '../components/Copyright';
 import { Icon } from '@chakra-ui/react';
 function SignUp(props) {
   const navigate = useNavigate();
@@ -120,7 +119,7 @@ function SignUp(props) {
                 </Grid>
               </Grid>
               <Box mt={5}>
-                <Copyright />
+               
               </Box>
             </form>
           </div>

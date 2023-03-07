@@ -1,6 +1,6 @@
 import React from 'react';
 import './calendar.css';
-import { Box, Table, Thead, Tbody, Tr, Td, useId } from '@chakra-ui/react';
+import { Box, Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 const CalendarHead = props => {
   const {

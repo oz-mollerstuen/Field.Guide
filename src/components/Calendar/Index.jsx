@@ -4,13 +4,8 @@ import CalendarBody from './calendar-body';
 import CalendarHead from './calendar-head';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useToast, Grid, Toast } from '@chakra-ui/react';
+import { Toast, Grid, Box } from '@chakra-ui/react';
 import moment from 'moment';
-import {
-  Box,
-  
- 
-  } from '@chakra-ui/react';
 import AddActivity from '../AddActivity/Index.jsx';
 import EditActivity from '../EditActivity/Index.jsx';
 import ActivityList from '../ActivityList/Index.jsx';
@@ -27,7 +22,7 @@ function Calendar(props) {
   const [dateObject, setdateObject] = useState(moment());
   const [showMonthTable, setShowMonthTable] = useState(false);
   const [selectedDay, setSelected] = useState(defaultSelectedDay);
-  const toast = useToast();
+  // const toast = useToast();
   // Later add hook for active days from database
 
   /*** CALENDAR HEAD ***/

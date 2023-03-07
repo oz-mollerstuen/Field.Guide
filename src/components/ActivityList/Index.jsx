@@ -1,9 +1,9 @@
 import React from 'react';
 import { withFirebase } from '../Firebase';
 import loader from './loader.gif';
-import { Box, Table, Thead, Tbody, Tr, Td, useStyles } from '@chakra-ui/react';
+import { Box, Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
-import moment from 'moment';
+
 
 function ActivityList(props) {
   const {

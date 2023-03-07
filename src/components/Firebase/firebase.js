@@ -13,6 +13,17 @@ const config = {
     measurementId: "REACT_APP_MEASUREMENT_ID"
   };
 
+//   const config = {
+//     REACT_APP_API_KEY: "AIzaSyCQNiywcgGh8xPBSYvPnxbZz1i81HCVnik",
+//     REACT_APP_AUTH_DOMAIN: "field-guide-capstone.firebaseapp.com",
+//     REACT_APP_PROJECT_ID: "field-guide-capstone",
+//     REACT_APP_STORAGE_BUCKET: "field-guide-capstone.appspot.com",
+//     REACT_APP_MESSAGING_SENDER_ID: "631856130382",
+//     REACT_APP_APP_ID: "1:631856130382:web:10b3a032fea743cefd561f",
+//     REACT_APP_MEASUREMENT_ID: "G-Y04MGP8F49"
+//   };
+
+
 class Firebase {
   constructor() {
     app.initializeApp(config);

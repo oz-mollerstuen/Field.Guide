@@ -1,11 +1,10 @@
 import React from 'react';
-import { ChakraProvider, Global } from '@chakra-ui/react';
 import { AuthUserContext, withAuthentication } from '../components/Session';
-import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import {
   Box,
+  ChakraProvider,
   CSSReset,
   Button,
   Text,
@@ -15,14 +14,16 @@ import {
   Container,
   } from '@chakra-ui/react';
 import Calendar from '../components/Calendar/Index.jsx';
-import Copyright from '../components/Copyright';
 import { MdMenu as MenuIcon } from 'react-icons/md';
 import clsx from 'clsx';
 import useStyles from '../config/theme.dashboard';
-import { useMatch, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar/Index';
+
+
 function Dashboard(props) {
-  let match = useMatch();
+  
+  const history = useNavigate();
 
   const classes = useStyles();
 
@@ -30,9 +31,7 @@ function Dashboard(props) {
 
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
-
-  const history = useNavigate();
-
+  
   const signOut = () => {
     props.firebase.auth.signOut();
     history.push('/');
@@ -97,7 +96,7 @@ function Dashboard(props) {
                 <Container maxWidth="xl" className={classes.container}>
                   <Calendar firebase={props.firebase} authUser={authUser} />
                   <Box pt={4}>
-                    <Copyright />
+                   
                   </Box>
                 </Container>
               </main>
