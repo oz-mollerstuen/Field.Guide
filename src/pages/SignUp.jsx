@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { withFirebase } from '../components/Firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import useStylesInUp from '../config/theme.signinup';
+import  useStylesInUp from '../config/theme.signinup';
 import { Grid, Box, Text, Input, Button, Avatar, CSSReset, ChakraProvider, } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react';
+
 function SignUp(props) {
   const navigate = useNavigate();
   const classes = useStylesInUp();

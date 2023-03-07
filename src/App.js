@@ -2,20 +2,18 @@ import React from 'react';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import {
   ChakraProvider,
   Box,
-   Link,
+  Link,
   VStack,
   Grid,
   theme,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import './App.css';
-import { Routes, Route } from 'react-router';
-
 
 function App() {
   return (
@@ -24,13 +22,20 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-          <BrowserRouter>            
+            
+            <React.Fragment> 
+
+              <Router> 
+
               <Routes>
-                <Route exact path="/" element={<SignIn />}/>
-                <Route path="/sign-up" element={<SignUp />}/>
-                <Route path="/dashboard" element={<Dashboard />}/>
+                <Route exact path="/" element={<SignIn />} />
+                <Route path="/sign-up" element={<SignUp />} />
+                <Route path="/dashboard" element={<Dashboard />} />
               </Routes>
-            </BrowserRouter>
+
+              </Router>
+
+            </React.Fragment>
 
             <Link
               color="teal.500"

@@ -1,4 +1,7 @@
 import styled from "@emotion/styled";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+
 
 const useStylesInUp = styled("div")(({ theme }) => ({
     root: {
@@ -41,5 +44,7 @@ const useStylesInUp = styled("div")(({ theme }) => ({
         color: 'red'
     }
 }));
+
+
 
 export default useStylesInUp;

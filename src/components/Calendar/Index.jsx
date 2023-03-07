@@ -99,7 +99,7 @@ function Calendar(props) {
     });
   };
 
-  useEffect(() => retrieveData(), [selectedDay]);
+  useEffect(() => [selectedDay]);
 
   /*** EDIT AN ACTIVITY ***/
   const [editing, setEditing] = useState(false);
