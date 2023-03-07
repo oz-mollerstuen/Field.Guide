@@ -3,8 +3,8 @@ import { withFirebase } from '../components/Firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { Grid, Box, Text, Input, Button, Avatar, ChakraProvider, CSSReset, Icon } from '@chakra-ui/react';
 import PasswordForget from '../components/PasswordForget/Index';
-
 import useStyles from '../config/theme.signinup';
+
 
 const GlobalStyle = () => <CSSReset />;
 
@@ -114,4 +114,4 @@ function SignIn(props) {
   );
 }
 
-export default withFirebase(SignIn);
+export default SignIn;

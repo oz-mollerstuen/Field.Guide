@@ -3,7 +3,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
+import PasswordForget from './components/PasswordForget/Index.jsx'; // import PasswordForget component
 import {
   ChakraProvider,
   Box,
@@ -14,7 +14,6 @@ import {
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import './App.css';
-
 function App() {
   return (
     <ChakraProvider theme={theme}>
@@ -28,9 +27,10 @@ function App() {
               <Router> 
 
               <Routes>
-                <Route exact path="/" element={<SignIn />} />
+                <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/forgot-password" element={<PasswordForget />} />
               </Routes>
 
               </Router>

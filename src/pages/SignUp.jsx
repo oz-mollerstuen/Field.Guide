@@ -130,4 +130,4 @@ function SignUp(props) {
   );
 }
 
-export default withFirebase(SignUp);
+export default SignUp;

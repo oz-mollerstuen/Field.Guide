@@ -8,20 +8,20 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "clsx": "^1.2.1",
     "firebase": "^9.17.2",
-    "framer-motion": "^10.1.0",
+    "framer-motion": "^10.2.3",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-datepicker": "^4.10.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^3.11.0",
+    "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "source-map-loader": "^4.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^3.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
-    "webpack": "^5.75.0"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }

@@ -12,6 +12,7 @@ root.render(
     <React.StrictMode>
       <App />
       <ColorModeScript />
+      
     </React.StrictMode>
   </FirebaseContext.Provider>
 );
