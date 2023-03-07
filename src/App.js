@@ -2,7 +2,7 @@ import React from 'react';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PasswordForget from './components/PasswordForget/Index.jsx'; // import PasswordForget component
 import {
   ChakraProvider,
@@ -21,20 +21,15 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-            
-            <React.Fragment> 
-
-              <Router> 
-
-              <Routes>
-                <Route path="/sign-in" element={<SignIn />} />
-                <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/forget-password" element={<PasswordForget />} />
-              </Routes>
-
+            <React.Fragment>
+              <Router>
+                <Routes>
+                  <Route path="/sign-in" element={<SignIn />} />
+                  <Route path="/sign-up" element={<SignUp />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/forget-password" element={<PasswordForget />} />
+                </Routes>
               </Router>
-
             </React.Fragment>
 
             <Link
