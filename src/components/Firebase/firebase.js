@@ -1,7 +1,7 @@
 import app from 'firebase/compat/app';
 import 'firebase/auth';
 import 'firebase/database';
-import config from './fireKey';
+import 'firebase/firestore';
 
 const config = {
     apiKey: "REACT_APP_API_KEY",
@@ -12,6 +12,8 @@ const config = {
     appId: "REACT_APP_APP_ID",
     measurementId: "REACT_APP_MEASUREMENT_ID"
   };
+
+
 
 //   const config = {
 //     REACT_APP_API_KEY: "AIzaSyCQNiywcgGh8xPBSYvPnxbZz1i81HCVnik",
