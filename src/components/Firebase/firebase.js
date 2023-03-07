@@ -1,7 +1,7 @@
 import app from 'firebase/compat/app';
 import 'firebase/auth';
 import 'firebase/database';
-
+import config from './fireKey';
 
 const config = {
     apiKey: "REACT_APP_API_KEY",
@@ -25,11 +25,11 @@ const config = {
 
 
 class Firebase {
-  constructor() {
-    app.initializeApp(config);
-    this.auth = app.auth();
-    this.db = app.database();
-  }
+    constructor() {
+        this.app = app.initializeApp(config);
+        this.auth = this.app.auth();
+        this.db = this.app.firestore();
+      }
 
   /*** Authentication  ***/
   doCreateUserWithEmailAndPassword = (email, password) =>

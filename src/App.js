@@ -2,7 +2,7 @@ import React from 'react';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
-
+import { BrowserRouter } from 'react-router-dom';
 
 import {
   ChakraProvider,
@@ -24,17 +24,13 @@ function App() {
         <Grid minH="100vh" p={3}>
           <ColorModeSwitcher justifySelf="flex-end" />
           <VStack spacing={8}>
-            <Routes>
-              <Route exact path="/">
-                <SignIn />
-              </Route>
-              <Route path="/sign-up">
-                <SignUp />
-              </Route>
-              <Route path="/dashboard">
-                <Dashboard />
-              </Route>
-            </Routes>
+          <BrowserRouter>            
+              <Routes>
+                <Route exact path="/" element={<SignIn />}/>
+                <Route path="/sign-up" element={<SignUp />}/>
+                <Route path="/dashboard" element={<Dashboard />}/>
+              </Routes>
+            </BrowserRouter>
 
             <Link
               color="teal.500"

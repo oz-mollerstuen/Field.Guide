@@ -5,7 +5,8 @@ import App from './App';
 import Firebase, { FirebaseContext } from './components/Firebase';
 import { ColorModeScript } from '@chakra-ui/react';
 
-const root = ReactDOMClient.createRoot(document.getElementById('root'));
+const containerElement = document.getElementById('root');
+const root = ReactDOMClient.createRoot(containerElement);
 root.render(
   <FirebaseContext.Provider value={new Firebase()}>
     <React.StrictMode>

@@ -98,5 +98,5 @@ function YourApp() {
 }
 
 // render your app inside the root element
-createRoot(document.getElementById('root')).render(<YourApp />);
+//(document.getElementById('root')).render(<YourApp /createRoot>);
 export default useStyles;
