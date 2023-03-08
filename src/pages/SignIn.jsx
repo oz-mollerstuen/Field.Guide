@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { withFirebase } from '../components/Firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -12,13 +13,14 @@ import {
   CSSReset,
   Icon,
 } from '@chakra-ui/react';
+import Firebase from '../components/Firebase';
 import PasswordForget from '../components/PasswordForget/Index';
-import useStyles from '../config/theme.signinup';
+import useStylesInUp from '../config/theme.signinup';
 
 const GlobalStyle = () => <CSSReset />;
 
 function SignIn(props) {
-  const classes = useStyles();
+  const classes = useStylesInUp;
 
   const initialUser = {
     id: null,
@@ -36,11 +38,14 @@ function SignIn(props) {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-
-  const handleSubmit = () => {
-    props.firebase
-      .doSignInWithEmailAndPassword(user.email, user.password)
+ 
+   const handleSubmit = () => {
+    console.log(user.email, user.password);
+    console.log('Hey there!');
+    firebase.auth()
+      .signInWithEmailAndPassword(user.email, user.password)
       .then(authUser => {
+        console.log('Authenticated user:', authUser);
         setUser(initialUser);
         navigate('/dashboard');
       })
@@ -48,7 +53,7 @@ function SignIn(props) {
         setUser({ ...user, error: error.message });
       });
   };
-
+  console.log(props.firebase);
   const isValid = user.email === '' || user.password === '';
 
   return (
@@ -123,4 +128,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
+export default withFirebase(SignIn);

@@ -25,7 +25,7 @@ function Dashboard(props) {
   
   const history = useNavigate();
 
-  const classes = useStyles();
+  const classes = useStyles;
 
   const [open, setOpen] = React.useState(true);
 

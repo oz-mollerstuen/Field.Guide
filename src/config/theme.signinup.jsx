@@ -4,6 +4,7 @@ import { AuthUserContext } from "../components/Session";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
+
 const customTheme = extendTheme({
   styles: {
     global: ({ theme }) => ({
@@ -34,6 +35,7 @@ const customTheme = extendTheme({
       },
       submit: {
         margin: theme.spacing(3, 0, 2),
+        
       },
       logo: {
         display: 'flex',

@@ -7,7 +7,7 @@ import { Icon } from '@chakra-ui/react';
 
 function SignUp(props) {
   const navigate = useNavigate();
-  const classes = useStylesInUp();
+  const classes = useStylesInUp;
   const initialUser = {
     id: null,
     name: '',

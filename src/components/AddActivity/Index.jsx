@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 function AddActivity(props) {
-  const style = useStyles();
+  const style = useStyles;
   const { authUser, firebase, selectedDay, setIsOpen, setToastMsg } = props;
   const uid = authUser.uid;
 

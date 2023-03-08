@@ -20,7 +20,7 @@ import {
 function Sidebar(props) {
   let match = useMatch();
 
-  const classes = useStyles();
+  const classes = useStyles;
 
   return (
     <Drawer

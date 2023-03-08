@@ -1,37 +1,27 @@
-import app from 'firebase/compat/app';
-import 'firebase/auth';
-import 'firebase/database';
-import 'firebase/firestore';
 
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import firebase from 'firebase/app';
 const config = {
-    apiKey: "REACT_APP_API_KEY",
-    authDomain: "REACT_APP_AUTH_DOMAIN",
-    projectId: "REACT_APP_PROJECT_ID",
-    storageBucket: "REACT_APP_STORAGE_BUCKET",
-    messagingSenderId: "REACT_APP_MESSAGING_SENDER_ID",
-    appId: "REACT_APP_APP_ID",
-    measurementId: "REACT_APP_MEASUREMENT_ID"
-  };
-
-
-
-//   const config = {
-//     REACT_APP_API_KEY: "AIzaSyCQNiywcgGh8xPBSYvPnxbZz1i81HCVnik",
-//     REACT_APP_AUTH_DOMAIN: "field-guide-capstone.firebaseapp.com",
-//     REACT_APP_PROJECT_ID: "field-guide-capstone",
-//     REACT_APP_STORAGE_BUCKET: "field-guide-capstone.appspot.com",
-//     REACT_APP_MESSAGING_SENDER_ID: "631856130382",
-//     REACT_APP_APP_ID: "1:631856130382:web:10b3a032fea743cefd561f",
-//     REACT_APP_MEASUREMENT_ID: "G-Y04MGP8F49"
-//   };
-
+  apiKey: 'AIzaSyD_X-MjuRIH4PhvcJ1UVD1H336EaF9brbk',
+  authDomain: 'field-guide-47799.firebaseapp.com',
+  projectId: 'field-guide-47799',
+  storageBucket: 'field-guide-47799.appspot.com',
+  messagingSenderId: '763269074073',
+  appId: '1:763269074073:web:9d819d0b4aae994967bc08',
+};
+firebase.initializeApp(config);
+ const app = initializeApp(config);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 class Firebase {
-    constructor() {
-        this.app = app.initializeApp(config);
-        this.auth = this.app.auth();
-        this.db = this.app.firestore();
-      }
+  constructor() {
+   
+    this.auth = getAuth(app);
+    this.db = getFirestore(app);
+  }
 
   /*** Authentication  ***/
   doCreateUserWithEmailAndPassword = (email, password) =>
@@ -45,17 +35,17 @@ class Firebase {
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
   /*** Database ***/
-  user = uid => this.db.ref(`users/${uid}`);
-  users = () => this.db.ref('users');
+  user = uid => this.db.collection('users').doc(uid);
+  users = () => this.db.collection('users');
 
   addActivity = (uid, activity) => {
-    const ref = this.db.ref().child(`users/${uid}/activities`);
-    ref.push(activity);
+    const ref = this.db.collection('users').doc(uid).collection('activities');
+    ref.add(activity);
   };
 
-  updateActivity = (uid, activity, activityKey) => {
-    const ref = this.db.ref().child(`users/${uid}/activities/${activityKey}`);
-    ref.update(activity);
+  updateActivity = (uid, activityId, activity) => {
+    const ref = this.db.collection('users').doc(uid).collection('activities').doc(activityId);
+    ref.set(activity, { merge: true });
   };
 }
 
