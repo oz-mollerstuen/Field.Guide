@@ -8,11 +8,13 @@ import { ColorModeScript } from '@chakra-ui/react';
 const containerElement = document.getElementById('root');
 const root = ReactDOMClient.createRoot(containerElement);
 root.render(
-  <FirebaseContext.Provider value={new Firebase()}>
+
+ 
     <React.StrictMode>
+      <FirebaseContext.Provider value={new Firebase()}> 
       <App />
       <ColorModeScript />
-      
+       </FirebaseContext.Provider>
     </React.StrictMode>
-  </FirebaseContext.Provider>
+ 
 );

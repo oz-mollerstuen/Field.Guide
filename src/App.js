@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Calendar from './components/Calendar/Index';
+import Sidebar from './components/Sidebar/Index';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
@@ -29,6 +30,8 @@ function App() {
                   <Route path="/sign-up" element={<SignUp />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/forget-password" element={<PasswordForget />} />
+                  <Route path="/sidebar" element={<Sidebar />} />
+                  {/* <Route path="/calendar" element={<Calendar />} /> */}
                 </Routes>
               </Router>
             </React.Fragment>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { AuthUserContext, withAuthentication } from '../components/Session';
-import 'firebase/compat/auth';
+
+import 'firebase/auth';
 import 'firebase/compat/firestore';
 import {
   Box,
@@ -11,7 +12,7 @@ import {
   IconButton,
   Badge,
   Flex,
-  Container,
+  
   } from '@chakra-ui/react';
 import Calendar from '../components/Calendar/Index.jsx';
 import { MdMenu as MenuIcon } from 'react-icons/md';
@@ -65,7 +66,7 @@ function Dashboard(props) {
                     component="h1"
                     variant="h6"
                     color="inherit"
-                    noWrap
+                    nowrap
                     className={classes.title}
                   >
                     Dashboard
@@ -93,12 +94,12 @@ function Dashboard(props) {
                 }`}
               >
                 <div className={classes.FlexSpacer} />
-                <Container maxWidth="xl" className={classes.container}>
+                <Box maxWidth="xl" className={classes.box}>
                   <Calendar firebase={props.firebase} authUser={authUser} />
                   <Box pt={4}>
                    
                   </Box>
-                </Container>
+                </Box>
               </main>
             </div>
           ) : (

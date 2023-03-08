@@ -18,8 +18,8 @@ import {
   import useStyles from '../../config/theme.dashboard';
 
 function Sidebar(props) {
-  let match = useMatch();
-
+  
+  let match = useMatch({path: "/path/to/match"});
   const classes = useStyles;
 
   return (
@@ -38,27 +38,31 @@ function Sidebar(props) {
       <Divider />
       <List>
         <Text inset>Menu</Text>
-        <Link to={`${match.url}`}>
-          <ListItem button>
-            <ListIcon>
-              <CalendarIcon />
-            </ListIcon>
-            <ListItem primary="Workouts" />
-          </ListItem>
-        </Link>
+        {match && match.url && (
+          <Link to={`${match.url}`}>
+            <ListItem button>
+              <ListIcon>
+                <CalendarIcon />
+              </ListIcon>
+              <ListItem primary="Workouts" />
+            </ListItem>
+          </Link>
+        )}
       </List>
       <Divider />
       <List>
         <div>
           <Text inset>Account</Text>
-          <Link to={`${match.url}/settings`}>
-            <ListItem button>
-              <ListIcon>
-                <SettingsIcon />
-              </ListIcon>
-              <ListItem primary="Settings" />
-            </ListItem>
-          </Link>
+          {match && match.url && (
+            <Link to={`${match.url}/settings`}>
+              <ListItem button>
+                <ListIcon>
+                  <SettingsIcon />
+                </ListIcon>
+                <ListItem primary="Settings" />
+              </ListItem>
+            </Link>
+          )}
           <ListItem button onClick={() => props.signOut()}>
             <ListIcon>
               <ViewOffIcon />

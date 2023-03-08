@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
 import { withFirebase } from '../components/Firebase';
+import 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Grid,
@@ -59,9 +59,9 @@ function SignIn(props) {
   return (
     <ChakraProvider>
       <GlobalStyle />
-      <Grid container component="main" className={classes.root}>
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Box} elevation={6} square>
+      <Grid box component="main" className={classes.root}>
+        <Grid item xs="false" sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
           <div className={classes.box}>
             <Avatar className={classes.avatar}>
               <Icon />
@@ -112,7 +112,7 @@ function SignIn(props) {
               >
                 Sign In
               </Button>
-              <Grid container>
+              <Grid box>
                 <Grid item xs>
                   <PasswordForget />
                 </Grid>

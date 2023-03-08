@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { withFirebase } from '../components/Firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import  useStylesInUp from '../config/theme.signinup';
-import { Grid, Box, Text, Input, Button, Avatar, CSSReset, ChakraProvider, } from '@chakra-ui/react';
+import { Grid, Box, Text, Input, Button, Avatar, CSSReset, ChakraProvider, Square, } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react';
+import 'firebase/compat/firestore';
+import 'firebase/auth';
+
+
 
 function SignUp(props) {
   const navigate = useNavigate();
@@ -16,7 +19,7 @@ function SignUp(props) {
     error: null,
     auth: null,
   };
-
+console.log(props.firebase)
   const [user, setUser] = useState(initialUser);
 
   const handleChange = e => {
@@ -48,10 +51,10 @@ function SignUp(props) {
 
   return (
     <ChakraProvider>
-      <Grid container component="main" className={classes.root}>
+      <Grid box component="main" className={classes.root}>
         <CSSReset />
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Box} elevation={6} square>
+        <Grid item xs="false" sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
           <div className={classes.box}>
             <Avatar className={classes.avatar}>
               <Icon />
@@ -114,7 +117,7 @@ function SignUp(props) {
               >
                 Sign up
               </Button>
-              <Grid container>
+              <Grid box>
                 <Grid item>
                   <Link to="/">{'Already have an account? Sign In'}</Link>
                 </Grid>

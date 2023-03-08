@@ -113,7 +113,7 @@ function Calendar(props) {
   };
 
   return (
-    <Grid container spacing={3}>
+    <Grid box spacing={3}>
       <Grid item xs={12} md={8} lg={9}>
         <CalendarHead
           allMonths={allMonths}

@@ -43,7 +43,7 @@ const useStyles = chakra(({ theme }) => ({
   },
   drawerBox: {
     position: 'relative',
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -71,7 +71,7 @@ const useStyles = chakra(({ theme }) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
-  container: {
+  Box: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
@@ -98,5 +98,5 @@ function YourApp() {
 }
 
 // render your app inside the root element
-//(document.getElementById('root')).render(<YourApp /createRoot>);
+
 export default useStyles;
