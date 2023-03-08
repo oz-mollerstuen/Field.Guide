@@ -70,7 +70,7 @@ function PasswordForget(props) {
             name="email"
             value={state.email}
             onChange={handleChange}
-            fullWidth
+            width="75vw"
           />
           {state.error && <p style={{ color: 'red' }}>{state.error.message}</p>}
         </ModalBody>

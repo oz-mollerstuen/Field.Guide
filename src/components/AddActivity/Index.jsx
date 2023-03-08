@@ -3,13 +3,15 @@ import { withFirebase } from '../Firebase';
 import {
   FormControl,
   Input,
+  mb,
   Text,
-  Select,
+  MenuList,
   MenuItem,
+  Menu,
   Slider,
   Button,
   useStyles,
-} from '@chakra-ui/react';
+  } from '@chakra-ui/react';
 
 function AddActivity(props) {
   const style = useStyles;
@@ -64,42 +66,43 @@ function AddActivity(props) {
     <form noValidate onSubmit={e => e.preventDefault()}>
       <FormControl className={style.formControl}>
         <Input
-          style={{ marginTop: '5px' }}
+          style={{ marginTop: '5px', width: "75vw"}}
           variant="outlined"
           margin="normal"
           required
-          fullWidth
+          
           label="Activity name"
           value={activity.name}
           name="name"
           onChange={handleChange}
         />
         <div style={{ marginTop: '20px', marginBottom: '30px' }}>
-          <Text id="discrete-slider" gutterBottom>
+          <Text id="discrete-slider" mb>
             Type
           </Text>
-          <Select
-            labelId="demo-simple-select-label"
+          <Menu>
+          <MenuList
+            labelid="demo-simple-select-label"
             id="demo-simple-select"
             value={activity.type}
-            style={{ minWidth: '100%' }}
+            style={ "width: 75vw" }
             name="type"
             onChange={handleChange}
           >
-            <MenuItem value={1}>Lifting Weights</MenuItem>
-            <MenuItem value={2}>Running</MenuItem>
-            <MenuItem value={3}>Cycling</MenuItem>
-          </Select>
+            <MenuItem value={1}>Online Meeting</MenuItem>
+            <MenuItem value={2}>Phonecall</MenuItem>
+            <MenuItem value={3}>In-person Meeting</MenuItem>
+          </MenuList>
+          </Menu>
         </div>
-        <Text id="discrete-slider" gutterBottom>
+        <Text id="discrete-slider" mb>
           Duration
         </Text>
         <Slider
           defaultValue={activity.duration}
           aria-labelledby="discrete-slider"
-          valueLabelDisplay="auto"
           step={10}
-          marks
+          marks="true"
           min={10}
           max={120}
           name="duration"
@@ -109,7 +112,7 @@ function AddActivity(props) {
       </FormControl>
       <Button
         type="submit"
-        fullWidth
+        width="75vw"
         variant="contained"
         color="primary"
         onClick={handleSubmit}

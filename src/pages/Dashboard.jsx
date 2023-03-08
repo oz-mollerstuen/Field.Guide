@@ -22,7 +22,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar/Index';
 
 
-function Dashboard(props) {
+function Dashboard (props) {
   
   const history = useNavigate();
 
@@ -66,7 +66,7 @@ function Dashboard(props) {
                     component="h1"
                     variant="h6"
                     color="inherit"
-                    nowrap
+                    nowrap="true"
                     className={classes.title}
                   >
                     Dashboard
@@ -94,7 +94,7 @@ function Dashboard(props) {
                 }`}
               >
                 <div className={classes.FlexSpacer} />
-                <Box maxWidth="xl" className={classes.box}>
+                <Box width="75vw" className={classes.box}>
                   <Calendar firebase={props.firebase} authUser={authUser} />
                   <Box pt={4}>
                    

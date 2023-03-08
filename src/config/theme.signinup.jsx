@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import { extendTheme } from "@chakra-ui/react";
-
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 

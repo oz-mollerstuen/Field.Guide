@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { withFirebase } from '../components/Firebase';
 import 'firebase/auth';
+
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Grid,
+  GridItem,
   Box,
   Text,
   Input,
@@ -39,14 +41,15 @@ function SignIn(props) {
     setUser({ ...user, [name]: value });
   };
  
-   const handleSubmit = () => {
+   const handleSubmit = (event) => {
+    event.preventDefault();
     console.log(user.email, user.password);
     console.log('Hey there!');
     firebase.auth()
       .signInWithEmailAndPassword(user.email, user.password)
       .then(authUser => {
         console.log('Authenticated user:', authUser);
-        setUser(initialUser);
+        setUser(authUser);
         navigate('/dashboard');
       })
       .catch(error => {
@@ -59,9 +62,9 @@ function SignIn(props) {
   return (
     <ChakraProvider>
       <GlobalStyle />
-      <Grid box component="main" className={classes.root}>
-        <Grid item xs="false" sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
+      <Grid box="true" component="main" className={classes.root}>
+        <GridItem xs="false" sm={4} md={7} className={classes.image} />
+        <GridItem xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
           <div className={classes.box}>
             <Avatar className={classes.avatar}>
               <Icon />
@@ -78,7 +81,7 @@ function SignIn(props) {
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
+                width="75vw"
                 id="email"
                 label="Email Address"
                 name="email"
@@ -90,7 +93,7 @@ function SignIn(props) {
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
+                width="75vw"
                 name="password"
                 label="Password"
                 type="password"
@@ -103,7 +106,7 @@ function SignIn(props) {
               </Text>
               <Button
                 type="submit"
-                fullWidth
+                width="75vw"
                 variant="contained"
                 color="primary"
                 className={classes.submit}
@@ -112,17 +115,17 @@ function SignIn(props) {
               >
                 Sign In
               </Button>
-              <Grid box>
-                <Grid item xs>
+              <Grid box="true">
+                <GridItem xs="true">
                   <PasswordForget />
-                </Grid>
-                <Grid item>
+                </GridItem>
+                <GridItem>
                   <Link to="/sign-up">Don't have an account? Sign Up</Link>
-                </Grid>
+                </GridItem>
               </Grid>
             </form>
           </div>
-        </Grid>
+        </GridItem>
       </Grid>
     </ChakraProvider>
   );

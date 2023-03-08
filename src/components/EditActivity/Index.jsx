@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { withFirebase } from '../Firebase';
 import {
   FormControl,
-  FormLabel,
   Input,
   Text,
   Select,
   Slider,
   Button,
   MenuItem,
+  MenuList,
   useStyleConfig,
+  mb,
+  Menu,
 } from '@chakra-ui/react';
 
 function EditActivity(props) {
   const [classes, _] = useStyleConfig({
     formControl: {
-      minWidth: '100%',
+      Width: '75%',
     },
     selectEmpty: {
       marginTop: '2',
@@ -59,7 +61,7 @@ function EditActivity(props) {
   const isValid = newActivity.name === '';
 
   // Add the activity to firebase via the API made in this app
-  const handleSubmit = action => {
+  const handleSubmit = () => {
     if (authUser) {
       firebase.updateActivity(uid, newActivity, activityKey);
       setEditing(false);
@@ -80,38 +82,41 @@ function EditActivity(props) {
           variant="outlined"
           margin="normal"
           required
-          fullWidth
+          width="75vw"
           value={newActivity.name}
           label="Activity name"
           name="name"
           onChange={handleChange}
         />
         <div style={{ marginTop: '20px', marginBottom: '30px' }}>
-          <Text id="discrete-slider" gutterBottom>
+          <Text id="discrete-slider" mb>
             Type
           </Text>
           <Select
-            labelId="demo-simple-select-label"
+            labelid="demo-simple-select-label"
             id="demo-simple-select"
             value={newActivity.type}
-            style={{ minWidth: '100%' }}
+            style={ "width: 75vw" }
             name="type"
             onChange={handleChange}
           >
-            <MenuItem value={1}>Lifting Weights</MenuItem>
-            <MenuItem value={2}>Running</MenuItem>
-            <MenuItem value={3}>Cycling</MenuItem>
+            <Menu>
+              <MenuList>
+            <MenuItem value={1}>Online Meeting</MenuItem>
+            <MenuItem value={2}>Phone Call</MenuItem>
+            <MenuItem value={3}>In-person Meeting</MenuItem>
+            </MenuList>
+            </Menu>
           </Select>
         </div>
-        <Text id="discrete-slider" gutterBottom>
+        <Text id="discrete-slider" mb>
           Duration
         </Text>
         <Slider
           defaultValue={parseInt(newActivity.duration)}
           aria-labelledby="discrete-slider"
-          valueLabelDisplay="auto"
           step={10}
-          marks
+          marks="true"
           min={10}
           max={120}
           name="duration"
@@ -121,7 +126,7 @@ function EditActivity(props) {
       </FormControl>
       <Button
         type="submit"
-        fullWidth
+        width="75vw"
         variant="contained"
         colorScheme="blue"
         onClick={() => handleSubmit('add')}

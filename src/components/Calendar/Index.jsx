@@ -4,7 +4,7 @@ import CalendarBody from './calendar-body';
 import CalendarHead from './calendar-head';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Toast, Grid, Box } from '@chakra-ui/react';
+import { Toast, Grid, Box, GridItem } from '@chakra-ui/react';
 import moment from 'moment';
 import AddActivity from '../AddActivity/Index.jsx';
 import EditActivity from '../EditActivity/Index.jsx';
@@ -99,7 +99,7 @@ function Calendar(props) {
     });
   };
 
-  useEffect(() => [selectedDay]);
+  // useEffect(() => [selectedDay]);
 
   /*** EDIT AN ACTIVITY ***/
   const [editing, setEditing] = useState(false);
@@ -113,8 +113,8 @@ function Calendar(props) {
   };
 
   return (
-    <Grid box spacing={3}>
-      <Grid item xs={12} md={8} lg={9}>
+    <Grid spacing={3}>
+      <GridItem xs={12} md={8} lg={9}>
         <CalendarHead
           allMonths={allMonths}
           currentMonth={currentMonth}
@@ -135,8 +135,8 @@ function Calendar(props) {
           weekdays={moment.weekdays()}
           activeDays={activeDays}
         />
-      </Grid>
-      <Grid item xs={12} md={4} lg={3}>
+      </GridItem>
+      <GridItem xs={12} md={4} lg={3}>
         <Box className="box">
           {editing ? (
             <>
@@ -174,8 +174,8 @@ function Calendar(props) {
             </>
           )}
         </Box>
-      </Grid>
-      <Grid item xs={12} md={7}>
+      </GridItem>
+      <GridItem xs={12} md={7}>
         <Box className="box">
           <h3>
             Activities on {selectedDay.day}-{selectedDay.month + 1}
@@ -190,7 +190,7 @@ function Calendar(props) {
             setEditing={setEditing}
           />
         </Box>
-      </Grid>
+      </GridItem>
       <Toast
         anchorOrigin={{
           vertical: 'bottom',

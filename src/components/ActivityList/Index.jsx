@@ -45,7 +45,7 @@ function ActivityList(props) {
 
   return (
     <>
-      {loading === true ? <img src={loader} alt={loader}></img> : ''}
+      {loading === true ? <img src={loader} alt={loader}></img> : null}
 
       {activities === 'not set' || activities === null ? (
         <p>No Meetings added yet.</p>

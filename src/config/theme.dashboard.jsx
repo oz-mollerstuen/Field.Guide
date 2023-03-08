@@ -1,5 +1,5 @@
 import { chakra } from "@chakra-ui/react";
-import { createRoot } from 'react-dom/client';
+
 
 const drawerWidth = 240;
 
@@ -89,13 +89,6 @@ const useStyles = chakra(({ theme }) => ({
   },
 }));
 
-function YourApp() {
-  return (
-    <div className={useStyles.root}>
-      {/* your app content here */}
-    </div>
-  );
-}
 
 // render your app inside the root element
 

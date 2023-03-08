@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import  useStylesInUp from '../config/theme.signinup';
-import { Grid, Box, Text, Input, Button, Avatar, CSSReset, ChakraProvider, Square, } from '@chakra-ui/react';
+import { Grid, GridItem, Box, Text, Input, Button, Avatar, CSSReset, ChakraProvider, } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react';
 import 'firebase/compat/firestore';
 import 'firebase/auth';
@@ -28,18 +28,18 @@ console.log(props.firebase)
   };
 
   const handleSubmit = e => {
-    props.firebase.auth
-      .createUserWithEmailAndPassword(user.email, user.password)
-      .then(authUser => {
+    props.firebase
+      .doCreateUserWithEmailAndPassword(user.email, user.password)
+      // .then(authUser => {
         
-        return props.firebase.user(authUser.user.uid).set({
-          username: user.name,
-          email: user.email,
-          activities: 'not set',
-        });
-      })
+      //   return props.firebase.user(authUser.user.uid).set({
+      //     username: user.name,
+      //     email: user.email,
+      //     activities: 'not set',
+      //   });
+      // })
       .then(authUser => {
-        setUser(initialUser);
+        setUser(authUser);
         navigate('/dashboard');
       })
       .catch(error => {
@@ -51,10 +51,10 @@ console.log(props.firebase)
 
   return (
     <ChakraProvider>
-      <Grid box component="main" className={classes.root}>
+      <Grid component="main" className={classes.root}>
         <CSSReset />
-        <Grid item xs="false" sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
+        <GridItem xs="false" sm={4} md={7} className={classes.image} />
+        <GridItem xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
           <div className={classes.box}>
             <Avatar className={classes.avatar}>
               <Icon />
@@ -71,7 +71,7 @@ console.log(props.firebase)
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
+                width="75vw"
                 id="name"
                 label="Name"
                 name="name"
@@ -83,7 +83,7 @@ console.log(props.firebase)
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
+                width="75vw"
                 id="email"
                 label="Email Address"
                 name="email"
@@ -95,7 +95,7 @@ console.log(props.firebase)
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
+                width="75vw"
                 name="password"
                 label="Password"
                 type="password"
@@ -108,7 +108,7 @@ console.log(props.firebase)
               </Text>
               <Button
                 type="submit"
-                fullWidth
+                width="75vw"
                 variant="contained"
                 color="primary"
                 className={classes.submit}
@@ -117,17 +117,17 @@ console.log(props.firebase)
               >
                 Sign up
               </Button>
-              <Grid box>
-                <Grid item>
+              <Grid>
+                <GridItem>
                   <Link to="/">{'Already have an account? Sign In'}</Link>
-                </Grid>
+                </GridItem>
               </Grid>
               <Box mt={5}>
                
               </Box>
             </form>
           </div>
-        </Grid>
+        </GridItem>
       </Grid>
     </ChakraProvider>
   );
