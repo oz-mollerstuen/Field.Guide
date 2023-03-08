@@ -13,7 +13,7 @@ import {
   CSSReset,
   Icon,
 } from '@chakra-ui/react';
-import Firebase from '../components/Firebase';
+import firebase from 'firebase/compat/app';
 import PasswordForget from '../components/PasswordForget/Index';
 import useStylesInUp from '../config/theme.signinup';
 

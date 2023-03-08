@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
-import firebase from 'firebase/app';
+import firebase from 'firebase/compat/app';
 const config = {
   apiKey: 'AIzaSyD_X-MjuRIH4PhvcJ1UVD1H336EaF9brbk',
   authDomain: 'field-guide-47799.firebaseapp.com',
