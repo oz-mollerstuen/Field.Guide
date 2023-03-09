@@ -1,23 +1,23 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+// import { initializeApp } from 'firebase/app';
+import firebaseCompat from 'firebase/compat/app';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-
+import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
 
 const config = {
-  apiKey: 'process.env.REACT_APP_FIREBASE_API_KEY',
-  authDomain: 'process.env.REACT_APP_FIREBASE_AUTH_DOMAIN',
-  projectId: 'process.env.REACT_APP_FIREBASE_PROJECT_ID',
-  storageBucket: 'process.env.REACT_APP_FIREBASE_STORAGE_BUCKET',
-  messagingSenderId: 'process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID',
-  appId: 'process.env.REACT_APP_FIREBASE_APP_ID',
+  apiKey: "AIzaSyD_X-MjuRIH4PhvcJ1UVD1H336EaF9brbk",
+  authDomain: "field-guide-47799.firebaseapp.com",
+  projectId: "field-guide-47799",
+  storageBucket: "field-guide-47799.appspot.com",
+  messagingSenderId: "763269074073",
+  appId: "1:763269074073:web:9d819d0b4aae994967bc08"
 };
-const app = initializeApp(config);
+const app = firebaseCompat.initializeApp(config);
 
 class Firebase {
   constructor() {
-    this.auth = getAuth(app);
-    this.db = getFirestore(app);
+    this.auth = app.auth();
+    this.db = app.firestore();
    
   }
 

@@ -96,7 +96,7 @@ function EditActivity(props) {
             labelid="demo-simple-select-label"
             id="demo-simple-select"
             value={newActivity.type}
-            style={ "width: 75vw" }
+            style={{width: "75vw"}}
             name="type"
             onChange={handleChange}
           >

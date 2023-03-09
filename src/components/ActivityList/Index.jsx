@@ -47,7 +47,7 @@ function ActivityList(props) {
     <>
       {loading === true ? <img src={loader} alt={loader}></img> : null}
 
-      {activities === 'not set' || activities === null ? (
+      {activities.length === 0 ? (
         <p>No Meetings added yet.</p>
       ) : (
         <Box component={Box}>
@@ -56,8 +56,7 @@ function ActivityList(props) {
               <Tr>
                 <Td>Name</Td>
                 <Td>Type</Td>
-                <Td>Duration</Td>
-                <Td>Actions</Td>
+               
               </Tr>
             </Thead>
             <Tbody>

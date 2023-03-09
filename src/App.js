@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import 'firebase/auth';
 import 'firebase/firestore';
+
 import React from 'react';
 import Sidebar from './components/Sidebar/Index';
 import SignIn from './pages/SignIn';
@@ -30,8 +31,8 @@ function App() {
             <React.Fragment>
               <Router>
                 <Routes>
-                  <Route path="/" element={<SignIn />} />
-                  <Route path="/sign-up" element={<SignUp />} />
+                  <Route path="/" element={<SignIn firebase={mainFirebase} />} />
+                  <Route path="/sign-up" element={<SignUp firebase={mainFirebase} />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/forget-password" element={<PasswordForget />} />
                   <Route path="/sidebar" element={<Sidebar />} />

@@ -15,7 +15,7 @@ import {
   CSSReset,
   Icon,
 } from '@chakra-ui/react';
-import firebase from 'firebase/compat/app';
+// import firebase from 'firebase/compat/app';
 import PasswordForget from '../components/PasswordForget/Index';
 import useStylesInUp from '../config/theme.signinup';
 
@@ -40,13 +40,13 @@ function SignIn(props) {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
- 
-   const handleSubmit = (event) => {
+
+  const handleSubmit = event => {
     event.preventDefault();
     console.log(user.email, user.password);
     console.log('Hey there!');
-    firebase.auth()
-      .signInWithEmailAndPassword(user.email, user.password)
+    props.firebase
+      .doSignInWithEmailAndPassword(user.email, user.password)
       .then(authUser => {
         console.log('Authenticated user:', authUser);
         setUser(authUser);
@@ -64,7 +64,14 @@ function SignIn(props) {
       <GlobalStyle />
       <Grid box="true" component="main" className={classes.root}>
         <GridItem xs="false" sm={4} md={7} className={classes.image} />
-        <GridItem xs={12} sm={8} md={5} component={Box} elevation={6} square="true">
+        <GridItem
+          xs={12}
+          sm={8}
+          md={5}
+          component={Box}
+          elevation={6}
+          square="true"
+        >
           <div className={classes.box}>
             <Avatar className={classes.avatar}>
               <Icon />

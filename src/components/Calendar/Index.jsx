@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import CalendarBody from './calendar-body';
 import CalendarHead from './calendar-head';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { onSnapshot, collection } from "firebase/firestore";
+// import "react-datepicker/dist/react-datepicker.css";
 import { Toast, Grid, Box, GridItem } from '@chakra-ui/react';
 import moment from 'moment';
 import AddActivity from '../AddActivity/Index.jsx';
@@ -61,45 +61,43 @@ function Calendar(props) {
   const [toastMsg, setToastMsg] = useState(null);
 
   /*** ACTIVITY LIST ***/
-  const [activities, setActivities] = useState(true);
-  const [loading, setLoading] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeDays, setActiveDays] = useState([]);
-
-  const retrieveData = () => {
-    let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
-
-    let ref = firebase.db.ref().child(`users/${authUser.uid}/activities`);
-    ref
-      .orderByChild('date')
-      .equalTo(queryDate)
-      .on('value', snapshot => {
-        let data = snapshot.val();
-        setActivities(data);
-        setLoading(false);
-        // setEditing(false); Add later
-      });
-
-    // Update active days
-    retrieveActiveDays();
-  };
-
-  const retrieveActiveDays = () => {
-    let ref = firebase.db.ref().child(`users/${authUser.uid}/activities`);
-    ref.on('value', snapshot => {
-      let data = snapshot.val();
-      const values = Object.values(data);
-      // Store all active day/month combinations in array for calendar
-      const arr = values.map(obj => {
-        return obj.date.length === 8
-          ? obj.date.slice(0, 3)
-          : obj.date.slice(0, 4);
-      });
-      console.log(arr);
-      setActiveDays(arr);
+useEffect(() => {
+  const retrieveData = onSnapshot(collection(firebase.db, `users/${authUser.uid}/activities`), (snapshot) => {
+    const activityArr = [];
+    snapshot.forEach((activity) => {
+      activityArr.push(activity.data());
     });
-  };
+    setActivities(activityArr);
+    setLoading(false);
+    let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
+  // Update active days
+  //   retrieveActiveDays();
+  });
+  return () => retrieveData();
+})
 
-  // useEffect(() => [selectedDay]);
+  // const retrieveActiveDays = () => {
+  //   let ref = firebase.db.ref().child(`users/${authUser.uid}/activities`);
+  //   ref.on('value', snapshot => {
+  //     let data = snapshot.val();
+  //     const values = Object.values(data);
+  //     // Store all active day/month combinations in array for calendar
+  //     const arr = values.map(obj => {
+  //       return obj.date.length === 8
+  //         ? obj.date.slice(0, 3)
+  //         : obj.date.slice(0, 4);
+  //     });
+  //     console.log(arr);
+  //     setActiveDays(arr);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   retrieveData()
+  // }, []);
 
   /*** EDIT AN ACTIVITY ***/
   const [editing, setEditing] = useState(false);
@@ -159,12 +157,12 @@ function Calendar(props) {
                 <h3>
                   Add activity on {selectedDay.day}-{selectedDay.month + 1}{' '}
                 </h3>
-                <div style={{ position: "relative" }}>
+                {/* <div style={{ position: "relative" }}>
                   <DatePicker
                     selected={date}
                     onChange={date => setDate(date)}
                   />
-                </div>
+                </div> */}
                 <AddActivity
                   selectedDay={selectedDay}
                   authUser={props.authUser}

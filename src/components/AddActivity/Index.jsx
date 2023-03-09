@@ -3,11 +3,8 @@ import { withFirebase } from '../Firebase';
 import {
   FormControl,
   Input,
-  mb,
   Text,
-  MenuList,
-  MenuItem,
-  Menu,
+  Select,
   Slider,
   Button,
   useStyles,
@@ -66,7 +63,7 @@ function AddActivity(props) {
     <form noValidate onSubmit={e => e.preventDefault()}>
       <FormControl className={style.formControl}>
         <Input
-          style={{ marginTop: '5px', width: "75vw"}}
+          style={{ marginTop: '5px', width: "25vw"}}
           variant="outlined"
           margin="normal"
           required
@@ -80,35 +77,20 @@ function AddActivity(props) {
           <Text id="discrete-slider" mb>
             Type
           </Text>
-          <Menu>
-          <MenuList
+          <Select
             labelid="demo-simple-select-label"
             id="demo-simple-select"
             value={activity.type}
-            style={ "width: 75vw" }
+            style={{width: "75vw" }}
             name="type"
             onChange={handleChange}
           >
-            <MenuItem value={1}>Online Meeting</MenuItem>
-            <MenuItem value={2}>Phonecall</MenuItem>
-            <MenuItem value={3}>In-person Meeting</MenuItem>
-          </MenuList>
-          </Menu>
+            <option value={1}>Online Meeting</option>
+            <option value={2}>Phonecall</option>
+            <option value={3}>In-person Meeting</option>
+          </Select>
         </div>
-        <Text id="discrete-slider" mb>
-          Duration
-        </Text>
-        <Slider
-          defaultValue={activity.duration}
-          aria-labelledby="discrete-slider"
-          step={10}
-          marks="true"
-          min={10}
-          max={120}
-          name="duration"
-          onChange={handleSlider}
-          style={{ marginBottom: '20px' }}
-        />
+        
       </FormControl>
       <Button
         type="submit"

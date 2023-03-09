@@ -1,6 +1,5 @@
 import { chakra } from "@chakra-ui/react";
 
-
 const drawerWidth = 240;
 
 const useStyles = chakra(({ theme }) => ({
