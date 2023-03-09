@@ -1,10 +1,10 @@
 import './calendar.css';
 import '../../pages/SignUp';
-import SignUp from '../../pages/SignUp';
+import { soberDate } from '../../pages/SignUp';
 import { Box, Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import React from 'react';
-import { years, days, hours, mins, secs } from 'react';
+
 const CalendarHead = props => {
   const {
     allMonths,
@@ -13,6 +13,7 @@ const CalendarHead = props => {
     currentMonth,
     currentYear,
     showMonthTable,
+    soberDate
   } = props;
 
   let months = [];
@@ -49,33 +50,33 @@ const CalendarHead = props => {
 
   window.onload = function() {
     // Month Day, Year Hour:Minute:Second, id-of-element-container
-    countUpFromTime("countup", 'countup1'); // ****** Change this line!
+    countUpFromTime(new Date(soberDate).getTime(), 'countup1'); // Call countUpFromTime with soberDate state value
   };
   function countUpFromTime(countFrom, id) {
     countFrom = new Date(countFrom).getTime();
     const now = new Date(),
-        // countFrom = new Date(countFrom),
         timeDifference = (now - countFrom);
       
-    const secondsInADay = 60 * 60 * 1000 * 24,
+    const secondsInADay = 60 * 60 * 1000 * 24;
        
-      
-    days = Math.floor(timeDifference / (secondsInADay) * 1);
-    months = Math.floor(days / 31);
-    years = Math.floor(days / 365);
+    const days = Math.floor(timeDifference / (secondsInADay) * 1);
+    const months = Math.floor(days / 31);
+    let years = Math.floor(days / 365);
     if (years > 1){ days = days - (years * 365) }
-   
-   
-  
+     
+     
+    
     const idEl = document.getElementById(id);
     idEl.getElementsByClassName('years')[0].innerHTML = years;
     idEl.getElementsByClassName('months')[0].innerHTML = months;
     idEl.getElementsByClassName('days')[0].innerHTML = days;
-  
-  
+    
+    
     clearTimeout(countUpFromTime.interval);
     countUpFromTime.interval = setTimeout(function(){ countUpFromTime(countFrom, id); }, 1000);
   }
+  
+  
 
   return (
     <Box component={Box} className="month-selector">

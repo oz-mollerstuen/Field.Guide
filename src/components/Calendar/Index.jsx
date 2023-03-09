@@ -116,13 +116,13 @@ function Calendar(props) {
   return (
     <Grid spacing={3}>
       <GridItem xs={12} md={8} lg={9}>
-        <div class="countup" id="countup1">
-          <span class="timeel years">0</span>
-          <span class="timeel timeRefYears">years</span>
-          <span class="timeel months">00</span>
-          <span class="timeel timeRefMonths">months</span>
-          <span class="timeel days">00</span>
-          <span class="timeel timeRefDays">days</span>
+        <div className="countup" id="countup1">
+          <span className="timeel years">0</span>
+          <span className="timeel timeRefYears">years</span>
+          <span className="timeel months">00</span>
+          <span className="timeel timeRefMonths">months</span>
+          <span className="timeel days">00</span>
+          <span className="timeel timeRefDays">days</span>
         
         </div>
         <CalendarHead

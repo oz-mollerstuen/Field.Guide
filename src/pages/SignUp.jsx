@@ -7,7 +7,6 @@ import 'firebase/compat/firestore';
 import 'firebase/auth';
 
 
-
 function SignUp(props) {
   const navigate = useNavigate();
   const classes = useStylesInUp;
@@ -19,25 +18,29 @@ function SignUp(props) {
     error: null,
     auth: null,
   };
-console.log(props.firebase)
   const [user, setUser] = useState(initialUser);
+  const [soberDate, setSoberDate] = useState(''); 
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+    if (name === 'SoberDate') {
+      setSoberDate(value);
+    } else {
+      setUser({ ...user, [name]: value });
+    }
   };
-
+ 
   const handleSubmit = e => {
     props.firebase
       .doCreateUserWithEmailAndPassword(user.email, user.password)
-      // .then(authUser => {
-        
-      //   return props.firebase.user(authUser.user.uid).set({
-      //     username: user.name,
-      //     email: user.email,
-      //     activities: 'not set',
-      //   });
-      // })
+      .then(authUser => {
+        return props.firebase.user(authUser.user.uid).set({
+          username: user.name,
+          email: user.email,
+          activities: 'not set',
+          soberDate: soberDate, // added soberDate to user object
+        });
+      })
       .then(authUser => {
         setUser(authUser);
         navigate('/dashboard');
@@ -112,8 +115,9 @@ console.log(props.firebase)
                 label="SoberDate"
                 type="Date"
                 id="SoberDate"
-                autoComplete="current-password"
+                value= {soberDate}
                 onChange={handleChange}
+                
               />
               <Text className={classes.error}>
                 {user.error ? user.error : ''}
