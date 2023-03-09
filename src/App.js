@@ -1,4 +1,4 @@
-import firebase from './components/Firebase/firebase';
+import { initializeApp } from "firebase/app";
 import 'firebase/auth';
 import 'firebase/firestore';
 import React from 'react';
@@ -19,8 +19,6 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { mainFirebase } from './components/Firebase/firebase';
 import './App.css';
-
-firebase.initializeApp(mainFirebase);
 
 function App() {
   return (

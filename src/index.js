@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import './index.css';
 import App from './App';
-import Firebase, { FirebaseContext } from './components/Firebase';
+import { FirebaseContext } from './components/Firebase';
 import {mainFirebase} from "./components/Firebase/firebase"
 import { ColorModeScript } from '@chakra-ui/react';
 
