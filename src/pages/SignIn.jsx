@@ -62,6 +62,8 @@ function SignIn(props) {
   return (
     <ChakraProvider>
       <GlobalStyle />
+      <h1>Welcome To The</h1>
+      <h1>Field.Guide</h1>
       <Grid box="true" component="main" className={classes.root}>
         <GridItem xs="false" sm={4} md={7} className={classes.image} />
         <GridItem
@@ -108,9 +110,9 @@ function SignIn(props) {
                 autoComplete="current-password"
                 onChange={handleChange}
               />
-              <Text className={classes.error}>
+               <Text className={classes.error}>
                 {user.error ? user.error : ''}
-              </Text>
+               </Text> 
               <Button
                 type="submit"
                 width="75vw"
