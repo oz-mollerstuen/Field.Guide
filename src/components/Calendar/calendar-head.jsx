@@ -1,7 +1,10 @@
-import React from 'react';
 import './calendar.css';
+import '../../pages/SignUp';
+import SignUp from '../../pages/SignUp';
 import { Box, Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import React from 'react';
+import { years, days, hours, mins, secs } from 'react';
 const CalendarHead = props => {
   const {
     allMonths,
@@ -43,6 +46,36 @@ const CalendarHead = props => {
   rows.push(cells);
 
   let monthList = rows.map((row, i) => <Tr key={i}>{row}</Tr>);
+
+  window.onload = function() {
+    // Month Day, Year Hour:Minute:Second, id-of-element-container
+    countUpFromTime("countup", 'countup1'); // ****** Change this line!
+  };
+  function countUpFromTime(countFrom, id) {
+    countFrom = new Date(countFrom).getTime();
+    const now = new Date(),
+        // countFrom = new Date(countFrom),
+        timeDifference = (now - countFrom);
+      
+    const secondsInADay = 60 * 60 * 1000 * 24,
+       
+      
+    days = Math.floor(timeDifference / (secondsInADay) * 1);
+    months = Math.floor(days / 31);
+    years = Math.floor(days / 365);
+    if (years > 1){ days = days - (years * 365) }
+   
+   
+  
+    const idEl = document.getElementById(id);
+    idEl.getElementsByClassName('years')[0].innerHTML = years;
+    idEl.getElementsByClassName('months')[0].innerHTML = months;
+    idEl.getElementsByClassName('days')[0].innerHTML = days;
+  
+  
+    clearTimeout(countUpFromTime.interval);
+    countUpFromTime.interval = setTimeout(function(){ countUpFromTime(countFrom, id); }, 1000);
+  }
 
   return (
     <Box component={Box} className="month-selector">

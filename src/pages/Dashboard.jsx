@@ -45,7 +45,7 @@ function Dashboard (props) {
           authUser ? (
             <div className={classes.root}>
               <CSSReset />
-              <Flex
+              {/* <Flex
                 position="absolute"
                 className={clsx(classes.Flex, open && classes.FlexShift)}
               >
@@ -79,8 +79,8 @@ function Dashboard (props) {
                     username
                   </Button>
                   {/* <NotificationsIcon size={8} color="blue.500" strokeWidth={2} /> */}
-                </Flex>
-              </Flex>
+                {/* </Flex>
+              </Flex> */} 
 
               <Sidebar
                 signOut={signOut}

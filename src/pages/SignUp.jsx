@@ -103,6 +103,18 @@ console.log(props.firebase)
                 autoComplete="current-password"
                 onChange={handleChange}
               />
+               <Input
+                variant="outlined"
+                margin="normal"
+                required
+                width="15vw"
+                name="SoberDate"
+                label="SoberDate"
+                type="Date"
+                id="SoberDate"
+                autoComplete="current-password"
+                onChange={handleChange}
+              />
               <Text className={classes.error}>
                 {user.error ? user.error : ''}
               </Text>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import CalendarBody from './calendar-body';
 import CalendarHead from './calendar-head';
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection } from 'firebase/firestore';
 // import "react-datepicker/dist/react-datepicker.css";
 import { Toast, Grid, Box, GridItem } from '@chakra-ui/react';
 import moment from 'moment';
@@ -64,20 +64,23 @@ function Calendar(props) {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeDays, setActiveDays] = useState([]);
-useEffect(() => {
-  const retrieveData = onSnapshot(collection(firebase.db, `users/${authUser.uid}/activities`), (snapshot) => {
-    const activityArr = [];
-    snapshot.forEach((activity) => {
-      activityArr.push(activity.data());
-    });
-    setActivities(activityArr);
-    setLoading(false);
-    // let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
-  // Update active days
-  //   retrieveActiveDays();
-  });
-  return () => retrieveData();
-}, [])
+  useEffect(() => {
+    const retrieveData = onSnapshot(
+      collection(firebase.db, `users/${authUser.uid}/activities`),
+      snapshot => {
+        const activityArr = [];
+        snapshot.forEach(activity => {
+          activityArr.push(activity.data());
+        });
+        setActivities(activityArr);
+        setLoading(false);
+        // let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
+        // Update active days
+        //   retrieveActiveDays();
+      }
+    );
+    return () => retrieveData();
+  }, []);
 
   // const retrieveActiveDays = () => {
   //   let ref = firebase.db.ref().child(`users/${authUser.uid}/activities`);
@@ -113,6 +116,15 @@ useEffect(() => {
   return (
     <Grid spacing={3}>
       <GridItem xs={12} md={8} lg={9}>
+        <div class="countup" id="countup1">
+          <span class="timeel years">0</span>
+          <span class="timeel timeRefYears">years</span>
+          <span class="timeel months">00</span>
+          <span class="timeel timeRefMonths">months</span>
+          <span class="timeel days">00</span>
+          <span class="timeel timeRefDays">days</span>
+        
+        </div>
         <CalendarHead
           allMonths={allMonths}
           currentMonth={currentMonth}
@@ -151,23 +163,22 @@ useEffect(() => {
                 setToastMsg={setToastMsg}
               />
             </>
-          
-            ) : (
-              <>
-                <h3>
-                  Add activity on {selectedDay.day}-{selectedDay.month + 1}{' '}
-                </h3>
-                {/* <div style={{ position: "relative" }}>
+          ) : (
+            <>
+              <h3>
+                Meetings on {selectedDay.month + 1}-{selectedDay.day}{' '}
+              </h3>
+              {/* <div style={{ position: "relative" }}>
                   <DatePicker
                     selected={date}
                     onChange={date => setDate(date)}
                   />
                 </div> */}
-                <AddActivity
-                  selectedDay={selectedDay}
-                  authUser={props.authUser}
-                  setIsOpen={setIsOpen}
-                  setToastMsg={setToastMsg}
+              <AddActivity
+                selectedDay={selectedDay}
+                authUser={props.authUser}
+                setIsOpen={setIsOpen}
+                setToastMsg={setToastMsg}
               />
             </>
           )}

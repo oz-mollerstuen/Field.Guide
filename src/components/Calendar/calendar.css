@@ -14,7 +14,7 @@
 }
 
 .calendar th {
-  background: #efefef;
+  background: #e5d285;
 }
 
 .calendar td {
@@ -23,11 +23,11 @@
 
 .calendar .today {
   font-weight: bold;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  background-image: linear-gradient(to top, #9a9de6 0%, #ac75e8 100%);
 }
 
 .calendar .active {
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  background-image: linear-gradient(120deg, #c9921c 0%, #1a9ba4 100%);
   color: white;
   padding: 5px;
   border-radius: 50%;
@@ -41,13 +41,13 @@
 }
 
 .month-cell:hover {
-  background: #efefef;
+  background: #0d99da;
   cursor: pointer;
 }
 
 .select-month-title {
   font-weight: bold;
-  background: #efefef;
+  background: #b152ed;
 }
 
 .toggle-month {
@@ -57,7 +57,7 @@
 .toggle-month:hover,
 .week-day:hover {
   cursor: pointer;
-  background: #efefef;
+  background: #df9494;
 }
 
 .arrow-icon {
@@ -67,7 +67,7 @@
 .calendar .selected-day {
   color: white;
   font-weight: bold;
-  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  background-image: linear-gradient(120deg, #ab1ecf 0%, #28b8bd 100%);
 }
 
 .box
@@ -84,4 +84,26 @@ svg.MuiSvgIcon-root {
 svg.MuiSvgIcon-root:hover {
   cursor: pointer;
   opacity: .5;
+}
+
+
+.countup {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.countup .timeel {
+  display: inline-block;
+  padding: 10px;
+  background: #151515;
+  margin: 0;
+  color: white;
+  min-width: 2.6rem;
+  margin-left: 13px;
+  border-radius: 10px 0 0 10px;
+}
+.countup span[class*="timeRef"] {
+  border-radius: 0 10px 10px 0;
+  margin-left: 0;
+  background: #e8c152;
+  color: black;
 }

@@ -100,7 +100,7 @@ function AddActivity(props) {
         onClick={handleSubmit}
         disabled={isValid}
       >
-        Add activity
+        Add a Meeting
       </Button>
     </form>
   );

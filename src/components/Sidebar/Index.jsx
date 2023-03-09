@@ -59,7 +59,7 @@ function Sidebar(props) {
               <ListItem button>
                 <ListIcon>
                   <SettingsIcon />
-                </ListIcon>
+                // </ListIcon>
                 <ListItem primary="Settings" />
               </ListItem>
             </Link>
