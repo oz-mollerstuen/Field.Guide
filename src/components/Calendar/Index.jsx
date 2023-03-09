@@ -72,12 +72,12 @@ useEffect(() => {
     });
     setActivities(activityArr);
     setLoading(false);
-    let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
+    // let queryDate = `${selectedDay.day}-${selectedDay.month}-${selectedDay.year}`;
   // Update active days
   //   retrieveActiveDays();
   });
   return () => retrieveData();
-})
+}, [])
 
   // const retrieveActiveDays = () => {
   //   let ref = firebase.db.ref().child(`users/${authUser.uid}/activities`);
